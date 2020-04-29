@@ -74,6 +74,8 @@
     </build>
 <!--    -->
     <properties>
+        <maven.compiler.source>13</maven.compiler.source>
+        <maven.compiler.target>13</maven.compiler.target>
         <java-version>13</java-version>
         <org.springframework-version>5.2.5.RELEASE</org.springframework-version>
         <org.aspectj-version>1.6.10</org.aspectj-version>

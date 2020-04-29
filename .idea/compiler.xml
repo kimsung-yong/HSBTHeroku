@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="HSBTHeroku" target="1.5" />
+      <module name="HSBTHeroku" target="13" />
     </bytecodeTargetLevel>
   </component>
 </project>
