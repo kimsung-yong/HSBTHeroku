@@ -28,24 +28,36 @@
             select * from tbl_qna where q_no > 0
         ]]>
     </select>
-
+<!--        oracle-->
+<!--    <select id="getListWithPaging" resultType="domain.qna.QnaVO">-->
+<!--        <![CDATA[-->
+<!--            select q_no, q_title, q_content, id, q_regtime, q_updatetime, replyCnt-->
+<!--            from (-->
+<!--                select /*+ INDEX_DESC(tbl_qna PK_Q_N) */-->
+<!--                    rownum rn, q_no, q_title, q_content, id ,q_regtime, q_updatetime, replycnt-->
+<!--                from tbl_qna-->
+<!--                where-->
+<!--        ]]>-->
+<!--        <include refid="criteria"></include>-->
+<!--        <![CDATA[-->
+<!--                rownum <= #{pageNum} * #{amount}-->
+<!--            )-->
+<!--            where rn > (#{pageNum} - 1) * #{amount}-->
+<!--        ]]>-->
+<!--    </select>-->
+<!--    mysql-->
     <select id="getListWithPaging" resultType="domain.qna.QnaVO">
+
         <![CDATA[
-            select q_no, q_title, q_content, id, q_regtime, q_updatetime, replyCnt
-            from (
-                select /*+ INDEX_DESC(tbl_qna PK_Q_N) */
-                    rownum rn, q_no, q_title, q_content, id ,q_regtime, q_updatetime, replycnt
-                from tbl_qna
-                where
+            select
+                *
+            from (select  * from tbl_qna order by q_no desc ) tb_qna
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
-                rownum <= #{pageNum} * #{amount}
-            )
-            where rn > (#{pageNum} - 1) * #{amount}
+                limit #{skip} , #{amount}
         ]]>
     </select>
-
     <select id="read" resultType="domain.qna.QnaVO">
         select * from tbl_qna where q_no = #{q_no}
     </select>
@@ -61,13 +73,13 @@
     </select>
 
     <insert id="insert">
-        insert into tbl_qna (q_no, q_title, q_content, id)
-        values (qna_seq.nextval, #{q_title}, #{q_content}, #{id})
+        insert into tbl_qna (q_title, q_content, id)
+        values (#{q_title}, #{q_content}, #{id})
     </insert>
 
     <insert id="insertSelectKey">
         <selectKey keyProperty="q_no" order="BEFORE" resultType="long">
-            select qna_seq.nextval from dual
+            select max(q_no) from tbl_qna
         </selectKey>
 
         insert into tbl_qna (q_no, q_title, q_content, id)

@@ -28,37 +28,49 @@
             select * from tbl_notice where n_no > 0
         ]]>
     </select>
-
+<!--    오라클-->
+<!--    <select id="getListWithPaging" resultType="domain.notice.NoticeVO">-->
+<!--        <![CDATA[-->
+<!--            select n_no, n_title, n_content, id, n_regtime, n_updatetime-->
+<!--            from (-->
+<!--                select /*+ INDEX_DESC(tbl_notice pk_n_n) */-->
+<!--                    rownum rn, n_no, n_title, n_content, id ,n_regtime, n_updatetime-->
+<!--                from tbl_notice-->
+<!--                where-->
+<!--        ]]>-->
+<!--        <include refid="criteria"></include>-->
+<!--        <![CDATA[-->
+<!--                rownum <= #{pageNum} * #{amount}-->
+<!--            )-->
+<!--            where rn > (#{pageNum} - 1) * #{amount}-->
+<!--        ]]>-->
+<!--    </select>-->
+<!--    mysql-->
     <select id="getListWithPaging" resultType="domain.notice.NoticeVO">
+
         <![CDATA[
-            select n_no, n_title, n_content, id, n_regtime, n_updatetime
-            from (
-                select /*+ INDEX_DESC(tbl_notice pk_n_n) */
-                    rownum rn, n_no, n_title, n_content, id ,n_regtime, n_updatetime
-                from tbl_notice
-                where
+            select
+                *
+            from (select  * from tbl_notice order by n_no desc ) tb_notice
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
-                rownum <= #{pageNum} * #{amount}
-            )
-            where rn > (#{pageNum} - 1) * #{amount}
+                limit #{skip} , #{amount}
         ]]>
     </select>
-
 
     <select id="read" resultType="domain.notice.NoticeVO">
         select * from tbl_notice where n_no = #{n_no}
     </select>
 
     <insert id="insert">
-        insert into tbl_notice (n_no, n_title, n_content, id)
-        values(notice_seq.nextval, #{n_title}, #{n_content}, #{id})
+        insert into tbl_notice (n_title, n_content, id)
+        values(#{n_title}, #{n_content}, #{id})
     </insert>
 
     <insert id="insertSelectKey">
         <selectKey keyProperty="n_no" order="BEFORE" resultType="Long">
-            select notice_seq.nextval from dual
+            select max(n_no)+1 from tbl_notice
         </selectKey>
             insert into tbl_notice (n_no, n_title, n_content, id)
             values(#{n_no}, #{n_title}, #{n_content}, #{id})

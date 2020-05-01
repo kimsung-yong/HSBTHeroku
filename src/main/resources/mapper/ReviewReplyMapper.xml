@@ -5,8 +5,8 @@
 <mapper namespace="mapper.ReviewReplyMapper">
 
     <insert id="insert">
-        insert into tbl_review_reply(rr_no, r_no, rr_content, id)
-        values (review_reply_seq.nextval, #{r_no}, #{rr_content},#{id})
+        insert into tbl_review_reply(r_no, rr_content, id)
+        values (#{r_no}, #{rr_content},#{id})
     </insert>
 
     <select id="read" resultType="domain.review.ReviewReplyVO">
@@ -18,20 +18,27 @@
     </delete>
 
     <update id="update">
-        update tbl_review_reply set rr_content = #{rr_content}, rr_updatetime = sysdate where rr_no =#{rr_no}
+        update tbl_review_reply set rr_content = #{rr_content} where rr_no =#{rr_no}
     </update>
+
+<!--    oracle-->
+<!--    <select id="getListWithPaging" resultType="domain.review.ReviewReplyVO">-->
+<!--        <![CDATA[-->
+<!--            select rr_no, r_no, rr_content, id, rr_regtime, rr_updatetime-->
+<!--            from (-->
+<!--                select /*+ INDEX(tbl_review_reply idx_r_r */-->
+<!--                rownum rn, rr_no, r_no, rr_content, id, rr_regtime, rr_updatetime-->
+<!--                from tbl_review_reply-->
+<!--                where r_no = #{r_no}-->
+<!--                and rr_no > 0-->
+<!--                and rownum <= #{cri.pageNum} * #{cri.amount}-->
+<!--            ) where rn > (#{cri.pageNum} - 1) * #{cri.amount}-->
+<!--        ]]>-->
+<!--    </select>-->
 
     <select id="getListWithPaging" resultType="domain.review.ReviewReplyVO">
         <![CDATA[
-            select rr_no, r_no, rr_content, id, rr_regtime, rr_updatetime
-            from (
-                select /*+ INDEX(tbl_review_reply idx_r_r */
-                rownum rn, rr_no, r_no, rr_content, id, rr_regtime, rr_updatetime
-                from tbl_review_reply
-                where r_no = #{r_no}
-                and rr_no > 0
-                and rownum <= #{cri.pageNum} * #{cri.amount}
-            ) where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+            select * from tbl_review_reply limit #{cri.skip},#{cri.amount}
         ]]>
     </select>
 

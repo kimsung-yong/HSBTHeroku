@@ -18,9 +18,9 @@ public interface BoardReplyService {
 
     public int remove(Long br_no);
 
-    public List<BoardReplyVO> getList(Criteria cri, Long b_no);
+    public List<BoardReplyVO> getList(Criteria cri,Long b_no);
 
-    public BoardReplyPageDTO getListPage(Criteria cri, Long b_no);
+    public BoardReplyPageDTO getListPage(Criteria cri,Long b_no);
 
 
 

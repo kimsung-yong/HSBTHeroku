@@ -10,7 +10,7 @@ public interface UserService {
 
     public void createUser(UserVO user);
 
-    public String get(String id, String pw, RedirectAttributes rttr);
+    public String get(String id, String pw,RedirectAttributes rttr);
 
     public String logout();
 

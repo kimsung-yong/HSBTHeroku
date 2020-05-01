@@ -27,21 +27,37 @@
         </trim>
     </sql>
 
+<!--    oracle-->
+<!--    <select id="getListWithPaging" resultType="domain.user.UserVO">-->
+<!--        <![CDATA[-->
+<!--            select id, pw, phone, name, address,manager-->
+<!--            from (-->
+<!--                select rownum rn, id, pw, phone, name ,address, manager-->
+<!--                from tbl_user-->
+<!--                where-->
+<!--        ]]>-->
+<!--        <include refid="criteria"></include>-->
+<!--        <![CDATA[-->
+<!--                rownum <= #{pageNum} * #{amount}-->
+<!--            )-->
+<!--            where rn > (#{pageNum} - 1) * #{amount}-->
+<!--        ]]>-->
+<!--    </select>-->
+
+<!--    mysql-->
     <select id="getListWithPaging" resultType="domain.user.UserVO">
+
         <![CDATA[
-            select id, pw, phone, name, address,manager
-            from (
-                select rownum rn, id, pw, phone, name ,address, manager
-                from tbl_user
-                where
+            select
+                *
+            from (select  * from tbl_user order by id desc ) tb_user
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
-                rownum <= #{pageNum} * #{amount}
-            )
-            where rn > (#{pageNum} - 1) * #{amount}
+                limit #{skip} , #{amount}
         ]]>
     </select>
+
     <!--정보 Insert-->
     <insert id="insert">
         insert into tbl_user (id,pw,phone,name,address)

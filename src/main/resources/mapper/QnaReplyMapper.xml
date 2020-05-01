@@ -4,26 +4,34 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.QnaReplyMapper">
     <insert id="insert">
-        insert into tbl_qna_reply (qr_no, q_no, qr_content, id)
-        values(qna_reply_seq.nextval, #{q_no}, #{qr_content}, #{id})
+        insert into tbl_qna_reply (q_no, qr_content, id)
+        values(#{q_no}, #{qr_content}, #{id})
     </insert>
 
     <select id="read" resultType="domain.qna.QnaReplyVO">
         select * from tbl_qna_reply where qr_no = #{qr_no}
     </select>
 
-    <select id="getListWithPaging" resultType="domain.qna.QnaReplyVO">
+<!--    orcle-->
+<!--    <select id="getListWithPaging" resultType="domain.qna.QnaReplyVO">-->
+<!--        <![CDATA[-->
+<!--            select qr_no, q_no, qr_content, id, qr_regtime, qr_updatetime-->
+<!--            from (-->
+<!--                select /*+ INDEX(tbl_qna_reply idx_qr */-->
+<!--                rownum rn, qr_no, q_no, qr_content, id, qr_regtime, qr_updatetime-->
+<!--                from tbl_qna_reply-->
+<!--                where q_no = #{q_no}-->
+<!--                and qr_no > 0-->
+<!--                and rownum <= #{cri.pageNum} * #{cri.amount}-->
+<!--            )-->
+<!--            where rn > (#{cri.pageNum} - 1) * #{cri.amount}-->
+<!--        ]]>-->
+<!--    </select>-->
+
+<!--        mysql-->
+    <select id="getListWithPaging" resultType="domain.board.BoardReplyVO">
         <![CDATA[
-            select qr_no, q_no, qr_content, id, qr_regtime, qr_updatetime
-            from (
-                select /*+ INDEX(tbl_qna_reply idx_qr */
-                rownum rn, qr_no, q_no, qr_content, id, qr_regtime, qr_updatetime
-                from tbl_qna_reply
-                where q_no = #{q_no}
-                and qr_no > 0
-                and rownum <= #{cri.pageNum} * #{cri.amount}
-            )
-            where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+            select * from tbl_qna_reply limit #{cri.skip},#{cri.amount}
         ]]>
     </select>
 
@@ -38,6 +46,6 @@
     </delete>
 
     <update id="update">
-        update tbl_qna_reply set qr_content = #{qr_content}, qr_updatetime = sysdate where qr_no = #{qr_no}
+        update tbl_qna_reply set qr_content = #{qr_content} where qr_no = #{qr_no}
     </update>
 </mapper>

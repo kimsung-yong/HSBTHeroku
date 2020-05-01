@@ -11,6 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class Criteria {
     private int pageNum;
     private int amount;
+    private int skip;
 
     private String type;
     private String keyword;
@@ -37,4 +38,12 @@ public class Criteria {
 
         return builder.toUriString();
     }
+
+    public int getSkip() {
+
+        return (this.pageNum -1) * this.amount;
+    }
+
+
+
 }

@@ -32,32 +32,46 @@
 			order by t_no desc
 		]]>
 	</select>
+<!--		oracle-->
+<!--	<select id="getListWithPaging" resultType="domain.tip.TipVO">-->
+<!--		<![CDATA[-->
+<!--			select t_no, t_title, t_content, id, t_regtime, t_updatetime, replycnt-->
+<!--			from (-->
+<!--				select /*+ INDEX_DESC(tbl_tip pk_t_n) */-->
+<!--				rownum rn, t_no, t_title, t_content, id, t_regtime, t_updatetime, replycnt-->
+<!--				from tbl_tip-->
+<!--				where-->
+<!--		]]>-->
+<!--				<include refid="criteria"></include>-->
+<!--		<![CDATA[-->
+<!--				rownum <= #{pageNum} * #{amount}-->
+<!--			)-->
+<!--			where rn > (#{pageNum} -1) * #{amount}-->
+<!--		]]>-->
+<!--	</select>-->
 
+<!--	mysql-->
 	<select id="getListWithPaging" resultType="domain.tip.TipVO">
+
 		<![CDATA[
-			select t_no, t_title, t_content, id, t_regtime, t_updatetime, replycnt
-			from (
-				select /*+ INDEX_DESC(tbl_tip pk_t_n) */
-				rownum rn, t_no, t_title, t_content, id, t_regtime, t_updatetime, replycnt
-				from tbl_tip
-				where
-		]]>
-				<include refid="criteria"></include>
+            select
+                *
+            from (select  * from tbl_tip order by t_no desc ) tb_tip
+        ]]>
+		<include refid="criteria"></include>
 		<![CDATA[
-				rownum <= #{pageNum} * #{amount}
-			)
-			where rn > (#{pageNum} -1) * #{amount}
-		]]>
+                limit #{skip} , #{amount}
+        ]]>
 	</select>
 
 	<insert id="insert">
-		insert into tbl_tip (t_no, t_title, t_content, id)
-		values(tip_seq.nextval, #{t_title}, #{t_content}, #{id})
+		insert into tbl_tip (t_title, t_content, id)
+		values(#{t_title}, #{t_content}, #{id})
 	</insert>
 
 	<insert id="insertSelectKey">
 		<selectKey keyProperty="t_no" order="BEFORE" resultType="long">
-			select tip_seq.nextval from dual
+			select max(t_no) +1 from tbl_tip
 		</selectKey>
 		insert into tbl_tip (t_no, t_title, t_content, id)
 		values(#{t_no}, #{t_title}, #{t_content}, #{id})
@@ -76,8 +90,7 @@
 	<update id="update">
 		update tbl_tip
 		set t_title = #{t_title},
-		t_content = #{t_content},
-		t_updatetime = sysdate
+		t_content = #{t_content}
 		where t_no = #{t_no}
 	</update>
 

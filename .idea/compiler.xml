@@ -10,8 +10,5 @@
         <module name="HSBTHeroku" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="HSBTHeroku" target="13" />
-    </bytecodeTargetLevel>
   </component>
 </project>

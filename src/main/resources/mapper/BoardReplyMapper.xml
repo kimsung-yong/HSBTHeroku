@@ -6,7 +6,7 @@
 <mapper namespace="mapper.BoardReplyMapper">
 
     <insert id="insert">
-        insert into tbl_board_reply (br_no,b_no,id,br_content) values (board_reply_seq.nextval,#{b_no},#{id},#{br_content})
+        insert into tbl_board_reply (b_no,id,br_content) values (#{b_no},#{id},#{br_content})
     </insert>
 
     <select id="read" resultType="domain.board.BoardReplyVO">
@@ -18,25 +18,31 @@
     </delete>
 
     <update id="update">
-        update tbl_board_reply set br_content = #{br_content}, br_updateTime = sysdate where br_no = #{br_no}
+        update tbl_board_reply set br_content = #{br_content} where br_no = #{br_no}
     </update>
+<!--        오라클-->
+<!--    <select id="getListWithPaging" resultType="domain.board.BoardReplyVO">-->
+<!--        <![CDATA[-->
+<!--            select  br_no,b_no, br_content,id,br_regTime,br_updateTime-->
+<!--            from (select /*+index(tbl_reply idx_reply) */-->
+<!--            rownum rn, br_no,b_no,br_content,id,br_regTime,br_updateTime-->
+<!--            from tbl_board_reply-->
+<!--            where b_no = #{b_no}-->
+<!--            and br_no > 0-->
+<!--            and rownum <= #{cri.pageNum} * #{cri.amount} )-->
+<!--            where rn > (#{cri.pageNum} -1) * #{cri.amount}-->
+<!--        ]]>-->
+<!--    </select>-->
 
     <select id="getListWithPaging" resultType="domain.board.BoardReplyVO">
         <![CDATA[
-            select  br_no,b_no, br_content,id,br_regTime,br_updateTime
-            from (select /*+index(tbl_reply idx_reply) */
-            rownum rn, br_no,b_no,br_content,id,br_regTime,br_updateTime
-            from tbl_board_reply
-            where b_no = #{b_no}
-            and br_no > 0
-            and rownum <= #{cri.pageNum} * #{cri.amount} )
-            where rn > (#{cri.pageNum} -1) * #{cri.amount}
+            select * from tbl_board_reply limit #{cri.skip},#{cri.amount}
         ]]>
     </select>
 
     <select id="getCountByBno" resultType="int">
         <![CDATA[
-            select count(br_no) from tbl_board_reply where b_no = #{b_no}
+            select count(*) from tbl_board_reply where b_no = #{b_no}
         ]]>
     </select>
 </mapper>
