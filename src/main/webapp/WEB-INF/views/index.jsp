@@ -155,8 +155,8 @@
     <div class="container-fluid p-0">
       <div class="row no-gutters">
         <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="${pageContext.request.contextPath}/resources/img/portfolio/fullsize/인테리어1-1.PNG">
-            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/thumbnails/인테리어1.PNG" alt="">
+          <a class="portfolio-box" href="${pageContext.request.contextPath}/resources/img/portfolio/fullsize/intelia1-1.PNG">
+            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/thumbnails/intelia1.PNG" alt="">
             <div class="portfolio-box-caption">
               <div class="project-category text-white-50">
               </div>
@@ -167,8 +167,8 @@
           </a>
         </div>
         <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="${pageContext.request.contextPath}/resources/img/portfolio/fullsize/인테리어2-2.PNG">
-            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/thumbnails/인테리어2.PNG" alt="">
+          <a class="portfolio-box" href="${pageContext.request.contextPath}/resources/img/portfolio/fullsize/intelia2-2.PNG">
+            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/thumbnails/intelia2.PNG" alt="">
             <div class="portfolio-box-caption">
               <div class="project-category text-white-50">
               </div>
@@ -179,8 +179,8 @@
           </a>
         </div>
         <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="${pageContext.request.contextPath}/resources/img/portfolio/fullsize/인테리어3-3.PNG">
-            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/thumbnails/인테리어3.PNG" alt="">
+          <a class="portfolio-box" href="${pageContext.request.contextPath}/resources/img/portfolio/fullsize/intelia3.PNG">
+            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/thumbnails/intelia3.PNG" alt="">
             <div class="portfolio-box-caption">
               <div class="project-category text-white-50">
               </div>
@@ -191,8 +191,8 @@
           </a>
         </div>
         <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="${pageContext.request.contextPath}/resources/img/portfolio/fullsize/인테리어4-4.PNG">
-            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/thumbnails/인테리어4.PNG" alt="">
+          <a class="portfolio-box" href="${pageContext.request.contextPath}/resources/img/portfolio/fullsize/intelia4-4.PNG">
+            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/thumbnails/intelia4.PNG" alt="">
             <div class="portfolio-box-caption">
               <div class="project-category text-white-50">
               </div>
@@ -203,8 +203,8 @@
           </a>
         </div>
         <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="${pageContext.request.contextPath}/resources/img/portfolio/fullsize/인테리어5-5.PNG">
-            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/thumbnails/인테리어5.PNG" alt="">
+          <a class="portfolio-box" href="${pageContext.request.contextPath}/resources/img/portfolio/fullsize/intelia5-5.PNG">
+            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/thumbnails/intelia5.PNG" alt="">
             <div class="portfolio-box-caption">
               <div class="project-category text-white-50">
               </div>
@@ -215,8 +215,8 @@
           </a>
         </div>
         <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="${pageContext.request.contextPath}/resources/img/portfolio/fullsize/인테리어6-6.PNG">
-            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/thumbnails/인테리어6.PNG" alt="">
+          <a class="portfolio-box" href="${pageContext.request.contextPath}/resources/img/portfolio/fullsize/intelia6-6.PNG">
+            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/thumbnails/intelia6.PNG" alt="">
             <div class="portfolio-box-caption p-3">
               <div class="project-category text-white-50">
               </div>
