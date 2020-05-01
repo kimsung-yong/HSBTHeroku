@@ -18,7 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
 @WebAppConfiguration
 @ContextConfiguration({
         "file:src/main/resources/spring/applicationContext.xml",
-        "file:src/main/web/WEB-INF/spring/dispatcher-servlet.xml"
+        "file:../../../main/webapp/WEB-INF/spring/dispatcher-servlet.xml"
 })
 @Log4j
 
