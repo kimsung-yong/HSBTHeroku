@@ -79,7 +79,7 @@
 
     <insert id="insertSelectKey">
         <selectKey keyProperty="q_no" order="BEFORE" resultType="long">
-            select max(q_no) from tbl_qna
+            select max(q_no)+1 from tbl_qna
         </selectKey>
 
         insert into tbl_qna (q_no, q_title, q_content, id)
