@@ -227,7 +227,7 @@
         //     actionForm.append("<input type='hidden' name='b_no' value="+$(this).attr("href")+">");
         //     actionForm.attr("action","/board/freeboard/get");
         //     actionForm.submit();
-        })
+        // })
     });
 </script>
 
