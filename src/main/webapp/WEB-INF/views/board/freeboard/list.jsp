@@ -222,11 +222,11 @@
             searchForm.submit();
         })
 
-        $(".move").on("click",function (e) {
-            e.preventDefault();
-            actionForm.append("<input type='hidden' name='b_no' value="+$(this).attr("href")+">");
-            actionForm.attr("action","/board/freeboard/get");
-            actionForm.submit();
+        // $(".move").on("click",function (e) {
+        //     e.preventDefault();
+        //     actionForm.append("<input type='hidden' name='b_no' value="+$(this).attr("href")+">");
+        //     actionForm.attr("action","/board/freeboard/get");
+        //     actionForm.submit();
         })
     });
 </script>
