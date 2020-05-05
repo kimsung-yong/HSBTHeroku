@@ -5,7 +5,7 @@ pw varchar(45) not null,
 phone varchar(45) not null,
 name varchar(20) not null,
 address varchar(100) not null,
-manager int default '0' not null);
+manager int default '1' not null);
 -- 자유게시판 게시판 테이블 
 create table tbl_board(
 b_no int primary key auto_increment,
@@ -17,7 +17,6 @@ b_updatetime datetime on update current_timestamp,
 replycnt int default '0' not null,
 foreign key (id) references tbl_user(id) 
 on delete cascade
-on update cascade
 );
 -- 자유게시판 리플 테이블
 create table tbl_board_reply(
@@ -28,16 +27,15 @@ b_no int(10),
 br_regtime datetime default current_timestamp,
 br_updatetime datetime on update current_timestamp,
 foreign key (id) references tbl_user(id)
-on delete cascade
-on update cascade,
+on delete cascade,
 foreign key (b_no) references tbl_board(b_no)
 on delete cascade
-on update cascade
 );
 -- 견적 테이블 
 create table tbl_estimate(
 e_no int primary key auto_increment,
 e_area varchar(20) not null,
+e_address varchar(100) not null,
 e_content varchar(500) not null,
 id varchar(10) not null,
 e_price int,
@@ -46,7 +44,6 @@ e_regtime datetime default current_timestamp,
 e_updatetime datetime on update current_timestamp,
 foreign key (id) references tbl_user(id) 
 on delete cascade
-on update cascade
 );
 -- 공지사항 테이블 
 create table tbl_notice(
@@ -58,7 +55,6 @@ n_regtime datetime default current_timestamp,
 n_updatetime datetime on update current_timestamp,
 foreign key (id) references tbl_user(id) 
 on delete cascade
-on update cascade
 );
 
 -- qna 게시판 
@@ -72,7 +68,6 @@ q_updatetime datetime on update current_timestamp,
 replycnt int default '0' not null,
 foreign key (id) references tbl_user(id) 
 on delete cascade
-on update cascade
 );
 -- qna 리플 게시판 
 create table tbl_qna_reply(
@@ -83,12 +78,9 @@ q_no int(10),
 qr_regtime datetime default current_timestamp,
 qr_updatetime datetime on update current_timestamp,
 foreign key (id) references tbl_user(id)
-on delete cascade
-on update cascade
-,
+on delete cascade,
 foreign key (q_no) references tbl_qna(q_no)
 on delete cascade
-on update cascade
 );
 -- review 게시판 테이블 
 create table tbl_review(
@@ -101,7 +93,6 @@ r_updatetime datetime on update current_timestamp,
 replycnt int default '0' not null,
 foreign key (id) references tbl_user(id) 
 on delete cascade
-on update cascade
 );
 -- review 리플 게시판 테이블 
 create table tbl_review_reply(
@@ -112,11 +103,9 @@ r_no int(10),
 rr_regtime datetime default current_timestamp,
 rr_updatetime datetime on update current_timestamp,
 foreign key (id) references tbl_user(id)
-on delete cascade
-on update cascade,
+on delete cascade,
 foreign key (r_no) references tbl_review(r_no)
 on delete cascade
-on update cascade
 );
 -- 팁 게시판 테이블
 create table tbl_tip(
@@ -129,7 +118,6 @@ t_updatetime datetime on update current_timestamp,
 replycnt int default '0' not null,
 foreign key (id) references tbl_user(id) 
 on delete cascade
-on update cascade
 );
 -- tip reply 게시판
 create table tbl_tip_reply(
@@ -140,11 +128,9 @@ t_no int(10),
 tr_regtime datetime default current_timestamp,
 tr_updatetime datetime on update current_timestamp,
 foreign key (id) references tbl_user(id)
-on delete cascade
-on update cascade,
+on delete cascade,
 foreign key (t_no) references tbl_tip(t_no)
 on delete cascade
-on update cascade
 );
 
  
