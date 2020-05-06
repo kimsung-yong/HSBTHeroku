@@ -10,7 +10,7 @@
     </insert>
 
     <select id="read" resultType="domain.board.BoardReplyVO">
-        select * from tbl_board_reply where br_no = #{br_no}
+        select * from tbl_board_reply where br_no = #{br_no},b_no={b_no}
     </select>
 
     <delete id="delete">
@@ -36,7 +36,7 @@
 
     <select id="getListWithPaging" resultType="domain.board.BoardReplyVO">
         <![CDATA[
-            select * from tbl_board_reply limit #{cri.skip},#{cri.amount}
+            select * from tbl_board_reply where b_no= #{b_no} limit #{cri.skip},#{cri.amount}
         ]]>
     </select>
 

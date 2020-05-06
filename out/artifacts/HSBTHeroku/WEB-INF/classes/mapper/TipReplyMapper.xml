@@ -28,7 +28,7 @@
 <!--        mysql-->
     <select id="getListWithPaging" resultType="domain.tip.TipReplyVO">
         <![CDATA[
-            select * from tbl_tip_reply limit #{cri.skip},#{cri.amount}
+            select * from tbl_tip_reply where t_no = #{t_no} limit #{cri.skip},#{cri.amount}
         ]]>
     </select>
 
