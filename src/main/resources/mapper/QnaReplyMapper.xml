@@ -29,9 +29,9 @@
 <!--    </select>-->
 
 <!--        mysql-->
-    <select id="getListWithPaging" resultType="domain.board.BoardReplyVO">
+    <select id="getListWithPaging" resultType="domain.qna.QnaReplyVO">
         <![CDATA[
-            select * from tbl_qna_reply limit #{cri.skip},#{cri.amount}
+            select * from tbl_qna_reply where q_no = #{q_no} limit #{cri.skip},#{cri.amount}
         ]]>
     </select>
 

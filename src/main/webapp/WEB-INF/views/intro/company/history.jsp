@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>KNLS-당신의 세상을 만들어드립니다.</title>
 
     <!-- Bootstrap core CSS -->
     <%--    <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>

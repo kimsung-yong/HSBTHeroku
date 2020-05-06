@@ -38,7 +38,7 @@
 
     <select id="getListWithPaging" resultType="domain.review.ReviewReplyVO">
         <![CDATA[
-            select * from tbl_review_reply limit #{cri.skip},#{cri.amount}
+            select * from tbl_review_reply where r_no = #{r_no} limit #{cri.skip},#{cri.amount}
         ]]>
     </select>
 
