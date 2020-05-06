@@ -27,7 +27,7 @@
     <meta name="author" content="">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
-    <title>KNLS</title>
+    <title>KNLS-당신의 세상을 만들어드립니다.</title>
 
     <link href="#" rel="shortcut icon">
     <!-- Bootstrap core CSS -->

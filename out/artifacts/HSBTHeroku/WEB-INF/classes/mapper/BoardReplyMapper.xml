@@ -10,7 +10,7 @@
     </insert>
 
     <select id="read" resultType="domain.board.BoardReplyVO">
-        select * from tbl_board_reply where br_no = #{br_no},b_no={b_no}
+        select * from tbl_board_reply where br_no = #{br_no}
     </select>
 
     <delete id="delete">

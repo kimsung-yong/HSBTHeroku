@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>KNLS-당신의 세상을 만들어드립니다.</title>
 
     <link href="#" rel="shortcut icon">
     <!-- Bootstrap core CSS -->
