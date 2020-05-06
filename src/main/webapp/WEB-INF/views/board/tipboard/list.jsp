@@ -155,9 +155,9 @@
 
 </div>
 <script>
-    /*function regloc() {
+    function regloc() {
         location.href="/board/tipboard/register";
-    }*/
+    }
 
     $(document).ready(function () {
         var result = '<c:out value="${result}"/>';
