@@ -154,7 +154,7 @@
     <!-- /#page-wrapper -->
 
 </div>
-<script>
+<script type="text/javascript">
     function regloc() {
         location.href="/board/tipboard/register";
     }
