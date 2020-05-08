@@ -23,9 +23,7 @@
 <!--        <result property="manager" column="manager"/>-->
 <!--    </resultMap>-->
     <sql id="criteria">
-        <where>
     <trim prefix="(" suffix=") AND " prefixOverrides="OR">
-
         <foreach item="type" collection="typeArr">
             <trim prefix="OR">
                 <choose>
@@ -42,7 +40,7 @@
             </trim>
         </foreach>
     </trim>
-        </where>
+
     </sql>
 
     <select id="getList" resultType="domain.board.BoardVO">
