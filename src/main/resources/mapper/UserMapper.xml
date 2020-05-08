@@ -17,10 +17,10 @@
                                 name like CONCAT('%',#{keyword},'%')
                             </when>
                             <when test="type == 'A'.toString()">
-                                address CONCAT('%',#{keyword},'%')
+                                address like CONCAT('%',#{keyword},'%')
                             </when>
                             <when test="type == 'M'.toString()">
-                                manager CONCAT('%',#{keyword},'%')
+                                manager like CONCAT('%',#{keyword},'%')
                             </when>
                         </choose>
                     </trim>
