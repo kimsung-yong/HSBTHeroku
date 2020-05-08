@@ -75,7 +75,7 @@
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
-        b_no > 0
+        
                 limit #{skip} , #{amount}
         ]]>
     </select>
