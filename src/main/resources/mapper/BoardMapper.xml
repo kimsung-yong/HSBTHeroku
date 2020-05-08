@@ -69,8 +69,8 @@
 
         <![CDATA[
             select
-                *
-            from (select  * from tbl_board order by b_no desc ) tb_board
+                b_no,b_title,b_content,id,b_regtime,b_updatetime
+            from (select  b_no,b_title,b_content,id,b_regtime,b_updatetime from tbl_board order by b_no desc ) tb_board
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
