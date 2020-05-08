@@ -70,10 +70,11 @@
         <![CDATA[
             select
                 b_no,b_title,b_content,id,b_regtime,b_updatetime
-            from (select  b_no,b_title,b_content,id,b_regtime,b_updatetime from tbl_board order by b_no desc ) tb_board
+            from tbl_board
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
+                order by b_no desc
                 limit #{skip} , #{amount}
         ]]>
     </select>
