@@ -99,6 +99,12 @@
 	</update>
 
 	<select id="getTotalCount" resultType="int">
-			select count(*) from tbl_tip where <include refid="criteria"></include> t_no > 0
+		<![CDATA[
+            select count(*) from tbl_tip where
+        ]]>
+		<include refid="criteria"></include>
+		<![CDATA[
+            t_no > 0
+        ]]>
 	</select>
 </mapper>
