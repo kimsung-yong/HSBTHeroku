@@ -47,7 +47,6 @@
 <!--    </select>-->
 <!--    mysql-->
     <select id="getListWithPaging" resultType="domain.notice.NoticeVO">
-
         <![CDATA[
             select * from tbl_notice where
         ]]>
@@ -89,9 +88,9 @@
     </update>
 
     <select id="getCount" resultType="int">
-        select count(*) from tbl_notice where <include refid="criteria"></include>
+        select   count(*) from tbl_notice where <include refid="criteria"></include>
         <![CDATA[
-            n_no > 0
-        ]]>
+       	 n_no > 0
+       ]]>
     </select>
 </mapper>
