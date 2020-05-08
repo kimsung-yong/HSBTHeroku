@@ -23,23 +23,26 @@
 <!--        <result property="manager" column="manager"/>-->
 <!--    </resultMap>-->
     <sql id="criteria">
-        <trim prefix="(" suffix=") AND " prefixOverrides="OR">
-            <foreach item="type" collection="typeArr">
-                <trim prefix="OR">
-                    <choose>
-                        <when test="type == 'T'.toString()">
-                            where b_title like CONCAT('%',#{keyword},'%')
-                        </when>
-                        <when test="type == 'C'.toString()">
-                            where b_content like CONCAT('%',#{keyword},'%')
-                        </when>
-                        <when test="type == 'W'.toString()">
-                            where id like CONCAT('%',#{keyword},'%')
-                        </when>
-                    </choose>
-                </trim>
-            </foreach>
-        </trim>
+        <where>
+            <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+
+                <foreach item="type" collection="typeArr">
+                    <trim prefix="OR">
+                        <choose>
+                            <when test="type == 'T'.toString()">
+                                b_title like CONCAT('%',#{keyword},'%')
+                            </when>
+                            <when test="type == 'C'.toString()">
+                                b_content like CONCAT('%',#{keyword},'%')
+                            </when>
+                            <when test="type == 'W'.toString()">
+                                id like CONCAT('%',#{keyword},'%')
+                            </when>
+                        </choose>
+                    </trim>
+                </foreach>
+            </trim>
+        </where>
     </sql>
 
     <select id="getList" resultType="domain.board.BoardVO">
@@ -68,15 +71,12 @@
     <select id="getListWithPaging" resultType="domain.board.BoardVO">
 
         <![CDATA[
-            select
-                *
-            from (select  * from tbl_board order by b_no desc ) tb_board
+            select * from  tb_board where
 
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
-        
-                limit #{skip} , #{amount}
+            order by b_no limit #{skip} , #{amount}
         ]]>
     </select>
 
