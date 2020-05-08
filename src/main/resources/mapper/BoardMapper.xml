@@ -40,7 +40,6 @@
             </trim>
         </foreach>
     </trim>
-
     </sql>
 
     <select id="getList" resultType="domain.board.BoardVO">
@@ -69,7 +68,7 @@
     <select id="getListWithPaging" resultType="domain.board.BoardVO">
 
         <![CDATA[
-            select * from  tb_board where
+            select * from  tbl_board where
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
