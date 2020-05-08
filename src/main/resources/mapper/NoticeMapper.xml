@@ -89,7 +89,7 @@
     </update>
 
     <select id="getCount" resultType="int">
-        select count(*) from tbl_notice <include refid="criteria"></include>
+        select count(*) from tbl_notice where <include refid="criteria"></include>
         <![CDATA[
             n_no > 0
         ]]>

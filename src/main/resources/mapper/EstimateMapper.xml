@@ -56,7 +56,10 @@
         select * from tbl_estimate where id = #{id}
     </select>
     <select id="total" resultType="int">
-        select count(*) from tbl_estimate where <include refid="criteria"></include> e_no > 0
+        select count(*) from tbl_estimate where <include refid="criteria"></include>
+        <![CDATA[
+        e_no > 0
+        ]]>
     </select>
 
     <select id="read" resultType="domain.estimate.EstimateVO">

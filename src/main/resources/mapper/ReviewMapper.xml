@@ -71,9 +71,9 @@
         ]]>
 	</select>
 	<select id="getTotalCount" resultType="int">
-       select   count(*) from tbl_review <include refid="criteria"></include>
+       select   count(*) from tbl_review where <include refid="criteria"></include>
 		<![CDATA[
-       	where r_no > 0
+       	 r_no > 0
        ]]>
 	</select>
 
