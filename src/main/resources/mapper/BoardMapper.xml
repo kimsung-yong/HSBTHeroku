@@ -24,24 +24,24 @@
 <!--    </resultMap>-->
     <sql id="criteria">
         <where>
-            <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+    <trim prefix="(" suffix=") AND " prefixOverrides="OR">
 
-                <foreach item="type" collection="typeArr">
-                    <trim prefix="OR">
-                        <choose>
-                            <when test="type == 'T'.toString()">
-                                b_title like CONCAT('%',#{keyword},'%')
-                            </when>
-                            <when test="type == 'C'.toString()">
-                                b_content like CONCAT('%',#{keyword},'%')
-                            </when>
-                            <when test="type == 'W'.toString()">
-                                id like CONCAT('%',#{keyword},'%')
-                            </when>
-                        </choose>
-                    </trim>
-                </foreach>
+        <foreach item="type" collection="typeArr">
+            <trim prefix="OR">
+                <choose>
+                    <when test="type == 'T'.toString()">
+                        b_title like CONCAT('%',#{keyword},'%')
+                    </when>
+                    <when test="type == 'C'.toString()">
+                        b_content like CONCAT('%',#{keyword},'%')
+                    </when>
+                    <when test="type == 'W'.toString()">
+                        id like CONCAT('%',#{keyword},'%')
+                    </when>
+                </choose>
             </trim>
+        </foreach>
+    </trim>
         </where>
     </sql>
 
@@ -72,16 +72,17 @@
 
         <![CDATA[
             select * from  tb_board where
-
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
-            order by b_no limit #{skip} , #{amount}
+        b_no > 0
+        order by b_no desc
+        limit #{skip} , #{amount}
         ]]>
     </select>
 
     <select id="getCount" resultType="int">
-        select count(*) from tbl_board
+        select count(*) from tbl_board where <include refid="criteria"></include> b_no > 0
     </select>
     <select id="getListSelect" resultType="domain.board.BoardVO">
         select * from tbl_board where b_no = #{b_no}
