@@ -71,6 +71,7 @@
             select
                 b_no,b_title,b_content,id,b_regtime,b_updatetime
             from tbl_board
+            where
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
