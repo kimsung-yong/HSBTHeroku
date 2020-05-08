@@ -10,13 +10,13 @@
 				<trim prefix="OR">
 					<choose>
 						<when test="type == 'T'.toString()">
-							t_title like '%' || #{keyword} || '%'
+							t_title like CONCAT('%',#{keyword},'%')
 						</when>
 						<when test="type == 'C'.toString()">
-							t_content like '%' || #{keyword} || '%'
+							t_content like CONCAT('%',#{keyword},'%')
 						</when>
 						<when test="type == 'W'.toString()">
-							id like '%' || #{keyword} || '%'
+							id like CONCAT('%',#{keyword},'%')
 						</when>
 					</choose>
 				</trim>
@@ -54,12 +54,12 @@
 	<select id="getListWithPaging" resultType="domain.tip.TipVO">
 
 		<![CDATA[
-            select
-                *
-            from (select  * from tbl_tip order by t_no desc ) tb_tip
+            select * from tbl_tip where
         ]]>
 		<include refid="criteria"></include>
 		<![CDATA[
+        		t_no > 0
+        		order by t_no desc
                 limit #{skip} , #{amount}
         ]]>
 	</select>
@@ -99,13 +99,6 @@
 	</update>
 
 	<select id="getTotalCount" resultType="int">
-		<![CDATA[
-			select count(*) from tbl_tip
-			where
-		]]>
-		<include refid="criteria"></include>
-		<![CDATA[
-			t_no > 0
-		]]>
+			select count(*) from tbl_tip where <include refid="criteria"></include> t_no > 0
 	</select>
 </mapper>
