@@ -88,6 +88,6 @@
     </update>
 
     <select id="getCount" resultType="int">
-        select   count(*) from tbl_notice 
+        select   count(*) from tbl_notice
     </select>
 </mapper>
