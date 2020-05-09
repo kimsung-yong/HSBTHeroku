@@ -54,7 +54,6 @@
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
-                order by id desc
                 limit #{skip} , #{amount}
         ]]>
     </select>
