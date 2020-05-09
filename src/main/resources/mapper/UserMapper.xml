@@ -6,7 +6,7 @@
 
     <sql id="criteria">
             <where>
-                <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+                <trim prefix="(" suffix=")" prefixOverrides="OR">
                     <foreach item="type" collection="typeArr">
                         <trim prefix="OR">
                             <choose>
