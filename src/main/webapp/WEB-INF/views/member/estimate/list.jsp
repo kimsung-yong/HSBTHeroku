@@ -66,7 +66,7 @@
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <form id="searchForm" action="/estimate/list" method="get"
+                                <form id="searchForm" action="/member/estimate/list" method="get"
                                       style="float: right">
                                     <select name="type">
                                         <option value="" <c:out
