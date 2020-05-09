@@ -8,14 +8,17 @@
             <foreach item="type" collection="typeArr">
                 <trim prefix="OR">
                     <choose>
-                        <when test="type == 'T'.toString()">
-                            b_title like CONCAT('%',#{keyword},'%')
-                        </when>
-                        <when test="type == 'C'.toString()">
-                            b_content like CONCAT('%',#{keyword},'%')
-                        </when>
-                        <when test="type == 'W'.toString()">
+                        <when test="type == 'I'.toString()">
                             id like CONCAT('%',#{keyword},'%')
+                        </when>
+                        <when test="type == 'N'.toString()">
+                            e_no like CONCAT('%',#{keyword},'%')
+                        </when>
+                        <when test="type == 'A'.toString()">
+                            e_regtime like CONCAT('%',#{keyword},'%')
+                        </when>
+                        <when test="type == 'M'.toString()">
+                            e_address like CONCAT('%',#{keyword},'%')
                         </when>
                     </choose>
                 </trim>
