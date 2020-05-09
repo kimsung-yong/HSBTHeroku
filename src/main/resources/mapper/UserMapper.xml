@@ -83,7 +83,7 @@
     </update>
 
     <select id="getCount" resultType="int">
-        select count(*) from tbl_user <include refid="criteria"></include>
+        select count(*) from tbl_user
     </select>
     <!--
         <insert id="insertSelectKey">
