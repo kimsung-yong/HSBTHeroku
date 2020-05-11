@@ -36,7 +36,7 @@ public class TipController {
     public String register(TipVO tipVO, RedirectAttributes rttr) {
         /*log.info("register......." + tipVO);*/
         service.register(tipVO);
-        rttr.addAttribute("result", tipVO.getT_no());
+        rttr.addFlashAttribute("result", tipVO.getT_no());
         return "redirect:/board/tipboard/list";
     }
 
