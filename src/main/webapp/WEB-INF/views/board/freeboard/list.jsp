@@ -169,14 +169,15 @@
     }
 
     $(document).ready(function () {
-        var result = '<c:out value="${result}"/>';
+        var result = '<c:out value="${param.result}"/>';
 
         checkModal(result);
 
         history.replaceState({}, null, null);
 
         function checkModal(result) {
-            console.log(history.state)
+            // 히스토리 로그출력
+            console.log(history.state);
             if (result === '' || history.state) {
                 return;
             }
