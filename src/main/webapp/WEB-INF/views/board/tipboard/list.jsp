@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-lg-12">
             <br>
-            <h1 class="page-header">자유게시판</h1>
+            <h1 class="page-header">Tip</h1>
             <br>
         </div>
         <!-- /.col-lg-12 -->

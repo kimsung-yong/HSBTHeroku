@@ -37,8 +37,8 @@ public class BoardServiceImp implements BoardService{
     }
 
     @Override
-    public void remove(Long BN) {
-        mapper.delete(BN);
+    public boolean remove(Long BN) {
+        return mapper.delete(BN) == 1;
     }
 
     @Override

@@ -53,8 +53,10 @@ public class  BoardController {
         return "redirect:/board/freeboard/list";
     }
     @PostMapping("/remove")
-    public String remove(Long b_no){
-        service.remove(b_no);
+    public String remove(Long b_no, RedirectAttributes rttr){
+        if(service.remove(b_no)){
+            rttr.addFlashAttribute("result", "success");
+        }
         return "redirect:/board/freeboard/list";
     }
 
