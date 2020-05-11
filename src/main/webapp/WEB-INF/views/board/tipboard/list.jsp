@@ -42,7 +42,7 @@
                         <%--                                --%>
                         <c:forEach items="${list}" var="tip">
                             <tr>
-                                <td><c:out value="${tip.b_no}"/></td>
+                                <td><c:out value="${tip.t_no}"/></td>
                                     <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
                                 <td><a id="detailPage" class="move" href="${tip.t_no}">
                                     <c:out value="${tip.t_title}"/>
