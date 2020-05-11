@@ -51,8 +51,8 @@
                                 </td>
 
                                 <td><c:out value="${tip.id}"/></td>
-                                <td><fmt:formatDate value="${tip.t_regTime}" pattern="yyyy-MM-dd"/></td>
-                                <td><fmt:formatDate value="${tip.t_updateTime}" pattern="yyyy-MM-dd"/></td>
+                                <td><fmt:formatDate value="${tip.t_regtime}" pattern="yyyy-MM-dd"/></td>
+                                <td><fmt:formatDate value="${tip.t_updatetime}" pattern="yyyy-MM-dd"/></td>
                             </tr>
                         </c:forEach>
                         </tbody>
