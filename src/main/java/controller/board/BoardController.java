@@ -32,8 +32,8 @@ public class  BoardController {
     @PostMapping("/register")
     public String register(BoardVO vo, RedirectAttributes rttr){
         service.regster(vo);
-//        rttr.addFlashAttribute("result",vo.getB_no());
-        rttr.addAttribute("result",vo.getB_no());
+        rttr.addFlashAttribute("result",vo.getB_no());
+//        rttr.addAttribute("result",vo.getB_no()); 이것으로 사용하면 값이 파라미터로 넘어가기 때문에 el에서 param.result로 값은 받아야한다.
         return "redirect:/board/freeboard/list";
 }
     @GetMapping({"/get","/modify"})

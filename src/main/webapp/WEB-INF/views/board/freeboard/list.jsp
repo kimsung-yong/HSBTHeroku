@@ -169,7 +169,7 @@
     }
 
     $(document).ready(function () {
-        var result = '<c:out value="${param.result}"/>';
+        var result = '<c:out value="${result}"/>';
 
         checkModal(result);
 
