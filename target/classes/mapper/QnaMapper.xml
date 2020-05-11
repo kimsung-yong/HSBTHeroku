@@ -9,13 +9,13 @@
                 <trim prefix="OR">
                     <choose>
                         <when test="type == 'T'.toString()">
-                            q_title like '%' || #{keyword} || '%'
+                            q_title like CONCAT('%',#{keyword},'%')
                         </when>
                         <when test="type == 'C'.toString()">
-                            q_content like '%' || #{keyword} || '%'
+                            q_content like CONCAT('%',#{keyword},'%')
                         </when>
                         <when test="type == 'W'.toString()">
-                            id like '%' || #{keyword} || '%'
+                            id like CONCAT('%',#{keyword},'%')
                         </when>
                     </choose>
                 </trim>
@@ -49,12 +49,12 @@
     <select id="getListWithPaging" resultType="domain.qna.QnaVO">
 
         <![CDATA[
-            select
-                *
-            from (select  * from tbl_qna order by q_no desc ) tb_qna
+            select * from tbl_qna where
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
+                q_no > 0
+                order by q_no desc
                 limit #{skip} , #{amount}
         ]]>
     </select>

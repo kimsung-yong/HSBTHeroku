@@ -23,23 +23,23 @@
 <!--        <result property="manager" column="manager"/>-->
 <!--    </resultMap>-->
     <sql id="criteria">
-        <trim prefix="(" suffix=") AND " prefixOverrides="OR">
-            <foreach item="type" collection="typeArr">
-                <trim prefix="OR">
-                    <choose>
-                        <when test="type == 'T'.toString()">
-                            b_title like '%' || #{keyword} || '%'
-                        </when>
-                        <when test="type == 'C'.toString()">
-                            b_content like '%' || #{keyword} || '%'
-                        </when>
-                        <when test="type == 'W'.toString()">
-                            id like '%' || #{keyword} || '%'
-                        </when>
-                    </choose>
-                </trim>
-            </foreach>
-        </trim>
+    <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+        <foreach item="type" collection="typeArr">
+            <trim prefix="OR">
+                <choose>
+                    <when test="type == 'T'.toString()">
+                        b_title like CONCAT('%',#{keyword},'%')
+                    </when>
+                    <when test="type == 'C'.toString()">
+                        b_content like CONCAT('%',#{keyword},'%')
+                    </when>
+                    <when test="type == 'W'.toString()">
+                        id like CONCAT('%',#{keyword},'%')
+                    </when>
+                </choose>
+            </trim>
+        </foreach>
+    </trim>
     </sql>
 
     <select id="getList" resultType="domain.board.BoardVO">
@@ -68,18 +68,18 @@
     <select id="getListWithPaging" resultType="domain.board.BoardVO">
 
         <![CDATA[
-            select
-                *
-            from (select  * from tbl_board order by b_no desc ) tb_board
+            select * from  tbl_board where
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
-                limit #{skip} , #{amount}
+        b_no > 0
+        order by b_no desc
+        limit #{skip} , #{amount}
         ]]>
     </select>
 
     <select id="getCount" resultType="int">
-        select count(*) from tbl_board
+        select count(*) from tbl_board where <include refid="criteria"></include> b_no > 0
     </select>
     <select id="getListSelect" resultType="domain.board.BoardVO">
         select * from tbl_board where b_no = #{b_no}

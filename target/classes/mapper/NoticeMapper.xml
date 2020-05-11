@@ -9,13 +9,13 @@
                 <trim prefix="OR">
                     <choose>
                         <when test="type == 'T'.toString()">
-                            n_title like '%' || #{keyword} || '%'
+                            n_title like CONCAT('%',#{keyword},'%')
                         </when>
                         <when test="type == 'C'.toString()">
-                            n_content like '%' || #{keyword} || '%'
+                            n_content like CONCAT('%',#{keyword},'%')
                         </when>
                         <when test="type == 'W'.toString()">
-                            id like '%' || #{keyword} || '%'
+                            id like CONCAT('%',#{keyword},'%')
                         </when>
                     </choose>
                 </trim>
@@ -47,14 +47,13 @@
 <!--    </select>-->
 <!--    mysql-->
     <select id="getListWithPaging" resultType="domain.notice.NoticeVO">
-
         <![CDATA[
-            select
-                *
-            from (select  * from tbl_notice order by n_no desc ) tb_notice
+            select * from tbl_notice where
         ]]>
         <include refid="criteria"></include>
         <![CDATA[
+                n_no > 0
+                order by n_no desc
                 limit #{skip} , #{amount}
         ]]>
     </select>
@@ -89,6 +88,6 @@
     </update>
 
     <select id="getCount" resultType="int">
-        select count(*) from tbl_notice
+        select   count(*) from tbl_notice
     </select>
 </mapper>
