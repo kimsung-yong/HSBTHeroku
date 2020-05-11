@@ -40,19 +40,19 @@
                         </thead>
                         <tbody>
                         <%--                                --%>
-                        <c:forEach items="${list}" var="board">
+                        <c:forEach items="${list}" var="tip">
                             <tr>
-                                <td><c:out value="${board.b_no}"/></td>
+                                <td><c:out value="${tip.b_no}"/></td>
                                     <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
-                                <td><a id="detailPage" class="move" href="${board.b_no}">
-                                    <c:out value="${board.b_title}"/>
-                                    <c:if test="${board.replyCnt !=0}">[ ${board.replyCnt} ]</c:if>
+                                <td><a id="detailPage" class="move" href="${tip.t_no}">
+                                    <c:out value="${tip.t_title}"/>
+                                    <c:if test="${tip.replyCnt !=0}">[ ${tip.replyCnt} ]</c:if>
                                 </a>
                                 </td>
 
-                                <td><c:out value="${board.id}"/></td>
-                                <td><fmt:formatDate value="${board.b_regTime}" pattern="yyyy-MM-dd"/></td>
-                                <td><fmt:formatDate value="${board.b_updateTime}" pattern="yyyy-MM-dd"/></td>
+                                <td><c:out value="${tip.id}"/></td>
+                                <td><fmt:formatDate value="${tip.b_regTime}" pattern="yyyy-MM-dd"/></td>
+                                <td><fmt:formatDate value="${tip.b_updateTime}" pattern="yyyy-MM-dd"/></td>
                             </tr>
                         </c:forEach>
                         </tbody>
