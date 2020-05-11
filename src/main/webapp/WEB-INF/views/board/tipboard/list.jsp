@@ -52,7 +52,7 @@
                         </tbody>
                     </table>
                     <c:if test="${!empty vo.id}">
-                        <button type="button" id="regBtn" class="btn btn-dark">글작성</button>
+                        <button type="button" id="regBtn" class="btn btn-dark" onclick="regloc()">글작성</button>
                     </c:if>
                     <div class="row">
                         <div class="col-lg-12">
