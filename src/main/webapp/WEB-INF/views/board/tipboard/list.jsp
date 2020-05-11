@@ -52,7 +52,7 @@
                         </tbody>
                     </table>
                     <c:if test="${!empty vo.id}">
-                        <button type="button" id="regBtn" class="btn btn-dark" onclick="regloc()">글작성</button>
+                        <button type="button" class="btn btn-dark" onclick="regloc()">글작성</button>
                     </c:if>
                     <div class="row">
                         <div class="col-lg-12">
@@ -177,9 +177,9 @@
             $("#myModal").modal("show");
         }
 
-        $("#regBtn").on("click", function () {
-            self.location = "/board/tipboard/register";
-        });
+        // $("#regBtn").on("click", function () {
+        //     self.location = "/board/tipboard/register";
+        // });
 
         var actionForm = $("#actionForm");
         var searchForm = $("#searchForm");

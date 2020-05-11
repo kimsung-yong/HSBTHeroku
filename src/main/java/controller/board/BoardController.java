@@ -34,7 +34,7 @@ public class  BoardController {
         service.regster(vo);
         rttr.addFlashAttribute("result",vo.getB_no());
         return "redirect:/board/freeboard/list";
-    }
+}
     @GetMapping({"/get","/modify"})
     public void get(@RequestParam("b_no") Long b_no,@ModelAttribute("cri") Criteria cri,Model model){
 
