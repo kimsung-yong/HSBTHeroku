@@ -176,6 +176,7 @@
         history.replaceState({}, null, null);
 
         function checkModal(result) {
+            console.log(history.state)
             if (result === '' || history.state) {
                 return;
             }
