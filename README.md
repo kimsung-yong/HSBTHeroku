@@ -1,5 +1,6 @@
 [! [HitCount] ( http://hits.dwyl.com/KimSeongyeon/HSBT.svg )] ( http://hits.dwyl.com/KimSeongyeon/HSBT )
 스프링으로 구현 한 건축 디자인 홈페이지입니다.
+https://hsbtheroku.herokuapp.com/
 사용중 언어 java, spring, javascipt (jquery, ajax) db 오라클
 
 ![board_gongji](https://user-images.githubusercontent.com/56425918/78899601-97553d00-7ab0-11ea-868f-af6536e2a4d4.jpg)
